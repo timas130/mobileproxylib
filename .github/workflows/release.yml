@@ -4,8 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       outline_sdk_tag:
-        description: 'Outline SDK tag to base the release on (e.g., x/v*.*.*)'
+        description: 'Outline SDK tag or branch to base the release on (e.g., x/v*.*.* or main)'
         required: true
+        type: string
+      release_version:
+        description: 'Release version to publish (required when outline_sdk_tag is not in x/v*.*.* form)'
+        required: false
         type: string
 
 jobs:
@@ -36,8 +40,17 @@ jobs:
       - name: Get Release Info
         id: get_release_info
         run: |
+          INPUT_VERSION="${{ github.event.inputs.release_version }}"
           INPUT_TAG="${{ github.event.inputs.outline_sdk_tag }}"
-          RELEASE_TAG="${INPUT_TAG#x/v}"
+          if [ -n "${INPUT_VERSION}" ]; then
+            RELEASE_TAG="${INPUT_VERSION}"
+          else
+            RELEASE_TAG="${INPUT_TAG#x/v}"
+            if [ "${RELEASE_TAG}" = "${INPUT_TAG}" ]; then
+              echo "::error::release_version is required when outline_sdk_tag does not start with 'x/v' (got '${INPUT_TAG}')"
+              exit 1
+            fi
+          fi
           echo "tag=${RELEASE_TAG}" >> $GITHUB_OUTPUT
 
           RELEASE_CHECKSUM=$(swift package compute-checksum output/mobileproxy.xcframework.zip)
