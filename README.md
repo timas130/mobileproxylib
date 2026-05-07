@@ -3,7 +3,7 @@
 This repository provides pre-compiled binaries of the Outline SDK Mobileproxy library for Android and iOS. See the [Outline SDK](https://github.com/Jigsaw-Code/outline-sdk/tree/main/x/mobileproxy) for the library's source code.
 
 > [!WARNING] 
-> The github repository has moved to `OutlineFoundation/mobileproxylib`. This shouldn't break existing users with pinned versions, but you will need to update the dependency location to upgrade to the latest version.
+> The github repository has moved to `timas130/mobileproxylib`. This shouldn't break existing users with pinned versions, but you will need to update the dependency location to upgrade to the latest version.
 
 ## Integration
 
@@ -24,7 +24,7 @@ We use JitPack to distribute the Android library. To integrate it into your app,
 2.  Add the dependency to your app's `build.gradle` file:
     ```groovy
     dependencies {
-        implementation 'com.github.OutlineFoundation:mobileproxylib:<version>'
+        implementation 'com.github.timas130:mobileproxylib:<version>'
     }
     ```
 
@@ -33,7 +33,7 @@ We use JitPack to distribute the Android library. To integrate it into your app,
 You can add the Mobileproxy to your Xcode project using Swift Package Manager.
 
 1.  In Xcode, go to **File > Add Package Dependencies...**
-2.  Enter the package repository URL: `https://github.com/OutlineFoundation/mobileproxylib`
+2.  Enter the package repository URL: `https://github.com/timas130/mobileproxylib`
 3.  Select the desired version.
 
 ## Releasing

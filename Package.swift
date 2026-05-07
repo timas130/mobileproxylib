@@ -29,7 +29,7 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "mobileproxy",
-            url: "https://github.com/OutlineFoundation/mobileproxylib/releases/download/0.1.0/mobileproxy.xcframework.zip",
+            url: "https://github.com/timas130/mobileproxylib/releases/download/0.1.0/mobileproxy.xcframework.zip",
             checksum: "0e886063f1f8ba9a575a6d564b25839b6b9625638772fc772b865291dd5df932"
         )
     ]
